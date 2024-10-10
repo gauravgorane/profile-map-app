@@ -5,12 +5,11 @@ import { database } from "../firebase";
 import MapComponent from "../components/MapComponent";
 
 const ProfilePage = () => {
-  const { profileId } = useParams(); // Get profileId from URL params
+  const { profileId } = useParams();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch the profile data from Firebase based on the profileId
     const fetchProfile = async () => {
       try {
         const profileRef = ref(database, `profiles/${profileId}`);
@@ -50,7 +49,6 @@ const ProfilePage = () => {
         <p className="text-gray-600 mb-4">{profile.description}</p>
         <div className="text-gray-700 mb-4">
           <h2 className="text-xl font-semibold mb-2">Contact Information:</h2>
-          {/* You can add more fields like email, phone, etc. */}
           <p>
             <strong>Latitude:</strong> {profile.lat}
           </p>

@@ -14,7 +14,6 @@ const AdminPage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
-  // Fetch profiles from Firebase
   useEffect(() => {
     const profilesRef = ref(database, "profiles/");
     onValue(profilesRef, (snapshot) => {
@@ -29,7 +28,6 @@ const AdminPage = () => {
     });
   }, []);
 
-  // Handle input changes
   const handleChange = (e) => {
     setProfileData({
       ...profileData,
@@ -37,18 +35,15 @@ const AdminPage = () => {
     });
   };
 
-  // Handle form submission for adding or updating a profile
   const handleSubmit = (e) => {
     e.preventDefault();
     const profilesRef = ref(database, "profiles/");
 
     if (isEditing) {
-      // Update existing profile
       update(ref(database, `profiles/${editingId}`), profileData);
       setIsEditing(false);
       setEditingId(null);
     } else {
-      // Add new profile
       const newProfileRef = push(profilesRef);
       set(newProfileRef, profileData);
     }
@@ -56,7 +51,6 @@ const AdminPage = () => {
     setProfileData({ name: "", photo: "", description: "", lat: "", lng: "" });
   };
 
-  // Handle editing a profile
   const handleEdit = (profile) => {
     setIsEditing(true);
     setEditingId(profile.id);
@@ -69,7 +63,6 @@ const AdminPage = () => {
     });
   };
 
-  // Handle deleting a profile
   const handleDelete = (id) => {
     remove(ref(database, `profiles/${id}`));
   };

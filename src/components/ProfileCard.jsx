@@ -2,11 +2,11 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const ProfileCard = ({ profile, onSummaryClick }) => {
-  const navigate = useNavigate(); // Initialize the navigate function
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    onSummaryClick(profile); // Call the function to handle additional actions
-    navigate(`/profile/${profile.id}`); // Programmatically navigate to the profile page
+    onSummaryClick(profile);
+    navigate(`/profile/${profile.id}`);
   };
 
   return (
@@ -22,7 +22,7 @@ const ProfileCard = ({ profile, onSummaryClick }) => {
       <p className="text-gray-600">{profile.description}</p>
       <button
         className="bg-blue-500 text-white px-4 py-2 mt-4 rounded"
-        onClick={handleButtonClick} // Use the new function for button click
+        onClick={handleButtonClick}
       >
         Summary
       </button>

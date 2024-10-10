@@ -15,7 +15,7 @@ const HomePage = () => {
       if (data) {
         const profilesArray = Object.entries(data).map(([id, profile]) => ({
           ...profile,
-          id, // Add the profile ID to each profile object
+          id,
         }));
 
         setProfiles(profilesArray);
